@@ -1,0 +1,26 @@
+URL and Response Structure for Currency Conversion Service
+
+URL
+http://localhost:8100/currency-conversion/from/USD/to/INR/quantity/10
+http://localhost:8100/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+
+Response Structure
+{
+  "id": 10001,
+  "from": "USD",
+  "to": "INR",
+  "conversionMultiple": 65.00,
+  "quantity": 10,
+  "totalCalculatedAmount": 650.00,
+  "environment": "8000 instance-id"
+}
+
+HOW TO CALL CURRENCY EXCHANGE SERVICE FROM CURRENCY CONVERSION SERVICE:
+
+RestTemplate is used to make rest API calls
+
+new RestTemplate().getForEntity("","");
+
+In getForEntity, the first argument is what is the URL you want to invoke
+And the second argument is the return type of class

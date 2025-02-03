@@ -1,0 +1,24 @@
+Currency Exchange Microservice ---- Port ---- 8000, 8001, 8002, ..
+Currency Conversion Microservice ---- Port ---- 8100, 8101, 8102, ..
+
+For Connecting to the spring cloud config server we have to add the configuration:
+ "spring.config.import=optional:configserver:http://localhost:8888"
+
+Currency Conversion Microservice will call the Currency Exchange Microservice and
+ask What is the value of USD in INR
+
+URL and Response Structure for Currency Exchange Service
+URL
+http://localhost:8000/currency-exchange/from/USD/to/INR
+Response Structure
+{
+   "id":10001,
+   "from":"USD",
+   "to":"INR",
+   "conversionMultiple":65.00,
+   "environment":"8000 instance-id"
+}
+
+There is multiple instance of Currency Exchange Microservice.
+If I am calling from Currency Conversion Microservice I need to know which instance of Currency Exchange microservice
+is providing response
